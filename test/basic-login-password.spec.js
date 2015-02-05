@@ -7,9 +7,9 @@ var Code = require('code'),
 	it = lab.it,
 	expect = Code.expect;
 
-describe('basic authentication with login and password', function () {
+describe('Basic authentication with login and password', function () {
 
-	it('returns a reply on successful auth', function (done) {
+	it('should return a reply on successful auth', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -29,7 +29,7 @@ describe('basic authentication with login and password', function () {
 	    });
 	});
 
-	it('returns an error on wrong scheme', function (done) {
+	it('should return an error on wrong scheme', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -49,7 +49,7 @@ describe('basic authentication with login and password', function () {
 	    });
 	});
 
-	it('returns a reply on successful double auth', function (done) {
+	it('should return a reply on successful double auth', function (done) {
 
 	    var handler = function (request, reply) {
 
@@ -79,7 +79,7 @@ describe('basic authentication with login and password', function () {
 	    });
 	});
 
-	it('returns a reply on failed optional auth', function (done) {
+	it('should return a reply on failed optional auth', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -99,7 +99,7 @@ describe('basic authentication with login and password', function () {
 	    });
 	});
 
-	it('returns an error on bad password', function (done) {
+	it('should return an error on bad password', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -119,7 +119,7 @@ describe('basic authentication with login and password', function () {
 	    });
 	});
 
-	it('returns an error on bad header format', function (done) {
+	it('should return an error on bad header format', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -141,7 +141,7 @@ describe('basic authentication with login and password', function () {
 	    });
 	});
 
-	it('returns an error on bad header format', function (done) {
+	it('should return an error on bad header format', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -163,7 +163,7 @@ describe('basic authentication with login and password', function () {
 	    });
 	});
 
-	it('returns an error on bad header internal syntax', function (done) {
+	it('should return an error on bad header internal syntax', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -185,7 +185,7 @@ describe('basic authentication with login and password', function () {
 	    });
 	});
 
-	it('returns an error on missing username', function (done) {
+	it('should return an error on missing username', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -229,7 +229,7 @@ describe('basic authentication with login and password', function () {
 	    });
 	});
 
-	it('returns an error on unknown user', function (done) {
+	it('should return an error on unknown user', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -250,7 +250,7 @@ describe('basic authentication with login and password', function () {
 	    });
 	});
 
-	it('returns an error on internal user lookup error', function (done) {
+	it('should return an error on internal user lookup error', function (done) {
 
 	    var server = new Hapi.Server({ debug: false });
 	    server.connection();
@@ -271,7 +271,7 @@ describe('basic authentication with login and password', function () {
 	    });
 	});
 
-	it('returns an error on non-object credentials error', function (done) {
+	it('should return an error on non-object credentials error', function (done) {
 
 	    var server = new Hapi.Server({ debug: false });
 	    server.connection();
@@ -292,7 +292,7 @@ describe('basic authentication with login and password', function () {
 	    });
 	});
 
-	it('returns an error on missing credentials error', function (done) {
+	it('should return an error on missing credentials error', function (done) {
 
 	    var server = new Hapi.Server({ debug: false });
 	    server.connection();
@@ -313,7 +313,7 @@ describe('basic authentication with login and password', function () {
 	    });
 	});
 
-	it('returns an error on insufficient scope', function (done) {
+	it('should return an error on insufficient scope', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -334,7 +334,7 @@ describe('basic authentication with login and password', function () {
 	    });
 	});
 
-	it('returns an error on insufficient scope specified as an array', function (done) {
+	it('should return an error on insufficient scope specified as an array', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();

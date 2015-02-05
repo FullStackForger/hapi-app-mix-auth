@@ -7,9 +7,9 @@ var Code = require('code'),
 	it = lab.it,
 	expect = Code.expect;
 
-describe('quest authentication with udid', function () {
+describe('Oauth authentication with token', function () {
 
-	it('returns a reply on successful auth', function (done) {
+	it('should return a reply on successful auth', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -29,7 +29,7 @@ describe('quest authentication with udid', function () {
 	    });
 	});
 
-	it('returns an error on wrong scheme', function (done) {
+	it('should return an error on wrong scheme', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -49,7 +49,7 @@ describe('quest authentication with udid', function () {
 	    });
 	});
 
-	it('returns a reply on successful double auth', function (done) {
+	it('should return a reply on successful double auth', function (done) {
 
 	    var handler = function (request, reply) {
 
@@ -79,7 +79,7 @@ describe('quest authentication with udid', function () {
 	    });
 	});
 
-	it('returns a reply on failed optional auth', function (done) {
+	it('should return a reply on failed optional auth', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -99,7 +99,7 @@ describe('quest authentication with udid', function () {
 	    });
 	});
 
-	it('returns an error on guid', function (done) {
+	it('should return an error on guid', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -119,7 +119,7 @@ describe('quest authentication with udid', function () {
 	    });
 	});
 
-	it('returns an error on bad header format', function (done) {
+	it('should return an error on bad header format', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -141,7 +141,7 @@ describe('quest authentication with udid', function () {
 	    });
 	});
 
-	it('returns an error on bad header format', function (done) {
+	it('should return an error on bad header format', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -163,7 +163,7 @@ describe('quest authentication with udid', function () {
 	    });
 	});
 
-	it('returns an error on bad header internal syntax', function (done) {
+	it('should return an error on bad header internal syntax', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -185,7 +185,7 @@ describe('quest authentication with udid', function () {
 	    });
 	});
 
-	it('returns an error on bad header (missing provider) internal syntax', function (done) {
+	it('should return an error on bad header (no provider) internal syntax', function (done) {
 
 		var server = new Hapi.Server();
 		server.connection();
@@ -210,7 +210,7 @@ describe('quest authentication with udid', function () {
 		});
 	});
 	
-	it('returns an error on bad header (missing token) internal syntax', function (done) {
+	it('should return an error on bad header (no token) internal syntax', function (done) {
 
 		var server = new Hapi.Server();
 		server.connection();
@@ -235,7 +235,7 @@ describe('quest authentication with udid', function () {
 		});
 	});
 	
-	it('returns an error on internal token lookup error', function (done) {
+	it('should return an error on internal token lookup error', function (done) {
 
 	    var server = new Hapi.Server({ debug: false });
 	    server.connection();
@@ -256,7 +256,7 @@ describe('quest authentication with udid', function () {
 	    });
 	});
 
-	it('returns an error on non-object credentials error', function (done) {
+	it('should return an error on non-object credentials error', function (done) {
 
 	    var server = new Hapi.Server({ debug: false });
 	    server.connection();
@@ -277,7 +277,7 @@ describe('quest authentication with udid', function () {
 	    });
 	});
 
-	it('returns an error on missing credentials error', function (done) {
+	it('should return an error on missing credentials error', function (done) {
 
 	    var server = new Hapi.Server({ debug: false });
 	    server.connection();
@@ -298,7 +298,7 @@ describe('quest authentication with udid', function () {
 	    });
 	});
 
-	it('returns an error on insufficient scope', function (done) {
+	it('should return an error on insufficient scope', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
@@ -319,7 +319,7 @@ describe('quest authentication with udid', function () {
 	    });
 	});
 
-	it('returns an error on insufficient scope specified as an array', function (done) {
+	it('should return an error on insufficient scope specified as an array', function (done) {
 
 	    var server = new Hapi.Server();
 	    server.connection();
