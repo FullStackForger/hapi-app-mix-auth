@@ -1,8 +1,8 @@
 {
-  "name": "hapi-auth-basic",
-  "description": "Basic authentication plugin",
-  "version": "2.0.0",
-  "repository": "git://github.com/hapijs/hapi-auth-basic",
+  "name": "hapi-app-mix-auth",
+  "description": "Hapi app mix authentication plugin",
+  "version": "1.0.0",
+  "repository": "",
   "main": "index",
   "keywords": [
     "hapi",

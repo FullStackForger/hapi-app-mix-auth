@@ -1,12 +1,18 @@
 ### hapi-auth-basic
 
+<!-- 
 [![Build Status](https://secure.travis-ci.org/hapijs/hapi-auth-basic.png)](http://travis-ci.org/hapijs/hapi-auth-basic)
+-->
 
-Lead Maintainer: [Eran Hammer](https://github.com/hueniverse)
-
-Basic authentication requires validating a username and password combination. The `'basic'` scheme takes the following options:
+Basic authentication requires validating a username and password combination. The `'mix-auth'` scheme takes the following options:
 
 - `validateFunc` - (required) a user lookup and password validation function with the signature `function(username, password, callback)` where:
+	- `object` - might have following fields
+        - `object.username`
+        - `object.password`
+        - `object.provider`
+        - `object.token`        
+        - `object.udid`
     - `username` - the username received from the client.
     - `password` - the password received from the client.
     - `callback` - a callback function with the signature `function(err, isValid, credentials)` where:
