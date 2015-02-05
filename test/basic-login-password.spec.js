@@ -16,7 +16,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
 
 	        var request = { method: 'POST', url: '/', headers: { authorization: internals.header('john', '123:45') } };
@@ -36,7 +36,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
 
 	        var request = { method: 'POST', url: '/', headers: { authorization: 'Steve something' } };
@@ -65,7 +65,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: handler });
 	        server.route({ method: 'POST', path: '/inner', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
 
@@ -86,7 +86,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: { mode: 'optional' } } });
 
 	        var request = { method: 'POST', url: '/' };
@@ -106,7 +106,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
 
 	        var request = { method: 'POST', url: '/', headers: { authorization: internals.header('john', 'abcd') } };
@@ -126,7 +126,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
 
 	        var request = { method: 'POST', url: '/', headers: { authorization: 'basic' } };
@@ -148,7 +148,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
 
 	        var request = { method: 'POST', url: '/', headers: { authorization: 'basic' } };
@@ -170,7 +170,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
 
 	        var request = { method: 'POST', url: '/', headers: { authorization: 'basic 123' } };
@@ -192,7 +192,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
 
 	        var request = { method: 'POST', url: '/', headers: { authorization: internals.header('', '') } };
@@ -214,7 +214,7 @@ describe('basic authentication with login and password', function () {
 
 	        expect(err).to.not.exist();
 
-	        server.auth.strategy('default', 'basic', {
+	        server.auth.strategy('default', 'mix-auth', {
 	            validateFunc: function (username, password, callback) { callback(null, true, {}); },
 	            allowEmptyUsername: true
 	        });
@@ -236,7 +236,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
 
 	        var request = { method: 'POST', url: '/', headers: { authorization: internals.header('doe', '123:45') } };
@@ -257,7 +257,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
 
 	        var request = { method: 'POST', url: '/', headers: { authorization: internals.header('jane', '123:45') } };
@@ -278,7 +278,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
 
 	        var request = { method: 'POST', url: '/', headers: { authorization: internals.header('invalid1', '123:45') } };
@@ -299,7 +299,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
 
 	        var request = { method: 'POST', url: '/', headers: { authorization: internals.header('invalid2', '123:45') } };
@@ -320,7 +320,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: { scope: 'x' } } });
 
 	        var request = { method: 'POST', url: '/', headers: { authorization: internals.header('john', '123:45') } };
@@ -341,7 +341,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: { scope: ['x', 'y'] } } });
 
 	        var request = { method: 'POST', url: '/', headers: { authorization: internals.header('john', '123:45') } };
@@ -362,7 +362,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: { scope: ['x', 'y', 'a'] } } });
 
 	        var request = { method: 'POST', url: '/', headers: { authorization: internals.header('john', '123:45') } };
@@ -384,7 +384,7 @@ describe('basic authentication with login and password', function () {
 
 	        expect(err).to.not.exist();
 
-	        server.auth.strategy('default', 'basic', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', { validateFunc: internals.user });
 	        server.route({
 	            path: '/',
 	            method: 'GET',
@@ -421,7 +421,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 
 	        var fn = function () {
 
@@ -440,7 +440,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 
 	        var fn = function () {
 
@@ -459,7 +459,7 @@ describe('basic authentication with login and password', function () {
 	    server.register(require('../'), function (err) {
 
 	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'basic', 'required', { validateFunc: internals.user });
+	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 
 	        var fn = function () {
 
@@ -479,7 +479,7 @@ describe('basic authentication with login and password', function () {
 
 	        expect(err).to.not.exist();
 
-	        server.auth.strategy('basic', 'basic', true, {
+	        server.auth.strategy('basic', 'mix-auth', true, {
 	            validateFunc: function (username, password, callback) {
 
 	                return callback({ some: 'value' }, false, null);
