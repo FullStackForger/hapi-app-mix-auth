@@ -173,7 +173,7 @@ describe('quest authentication with udid', function () {
 	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
 	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
 
-	        var request = { method: 'POST', url: '/', headers: { authorization: 'Token 123123123' } };
+	        var request = { method: 'POST', url: '/', headers: { authorization: 'Oauth 123123123' } };
 
 	        server.inject(request, function (res) {
 
@@ -197,7 +197,7 @@ describe('quest authentication with udid', function () {
 
 			
 			var request = { method: 'POST', url: '/', headers: { 
-				authorization: 'Token ' + (new Buffer(':1234567890', 'utf8')).toString('base64')
+				authorization: 'Oauth ' + (new Buffer(':1234567890', 'utf8')).toString('base64')
 			}};
 
 			server.inject(request, function (res) {
@@ -222,7 +222,7 @@ describe('quest authentication with udid', function () {
 
 
 			var request = { method: 'POST', url: '/', headers: {
-				authorization: 'Token ' + (new Buffer('token:', 'utf8')).toString('base64')
+				authorization: 'Oauth ' + (new Buffer('token:', 'utf8')).toString('base64')
 			}};
 
 			server.inject(request, function (res) {
@@ -459,7 +459,7 @@ describe('quest authentication with udid', function () {
 
 
 internals.facebookHeader = function (token) {
-    return 'Token ' + (new Buffer('facebook:' + token, 'utf8')).toString('base64');
+    return 'Oauth ' + (new Buffer('facebook:' + token, 'utf8')).toString('base64');
 };
 
 
