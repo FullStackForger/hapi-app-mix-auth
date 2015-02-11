@@ -25,9 +25,9 @@ authentication methods.
 
 The `'mix-auth'` scheme takes the following options:
 
-- `validateFunc` - (required) a user lookup and password validation function with the signature `function(username, password, callback)` where:
+- `validateFunc` - (required) a user lookup and password validation function with the signature `function(method, authObject, callback)` where:
     - `method` - string that contains `basic`, `oauth` or `quest`
-	- `object` - authentication object received from the client
+	- `authObject` - authentication object received from the client
         - `object.username` - decoded username for `basic` authentication
         - `object.password` - decoded password for `basic` authentication
         - `object.provider` - decoded provider for `oauth` authentication
