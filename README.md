@@ -41,8 +41,7 @@ The `'mix-auth'` scheme takes the following options:
         - `err` - an internal error.
         - `isValid` - `true` if both the username was found and the password matched, otherwise `false`.
         - `credentials` - a credentials object passed back to the application in `request.auth.credentials`. Typically, `credentials` are only
-          included when `isValid` is `true`, but there are cases when the application needs to know who tried to authenticate even when it fails
-          (e.g. with authentication mode `'try'`).
+          included when `isValid` is `true`, but there are cases when the application needs to know who tried to authenticate even when it fails (e.g. with authentication mode `'try'`).
 - `allowEmptyUsername` - (optional) if `true`, allows making requests with an empty username. Defaults to `false`.
 
 ## Example
