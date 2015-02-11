@@ -1,8 +1,4 @@
-# hapi-app-mix-auth
-
-<!-- 
-[![  ][ Build Status](https://secure.travis-ci.org/hapijs/hapi-auth-basic.png)](http://travis-ci.org/hapijs/hapi-auth-basic)
--->
+# hapi-app-mix-auth [![Build Status](https://api.travis-ci.org/innocentio/hapi-app-mix-auth.png)](https://travis-ci.org/innocentio/hapi-app-mix-auth)
 
 ## Hapi App Mix Auth Schema
 
