@@ -9,6 +9,27 @@ var Code = require('code'),
 
 describe('Oauth authentication with token', function () {
 
+
+	it('validation method should be executed within the scope of request', function (done) {
+		var server = new Hapi.Server(),
+			request;
+
+		server.connection();
+		server.register(require('../'), function (err) {
+			expect(err).to.not.exist();
+			server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: function () {
+				var request = this;
+				expect(request.raw.req).to.be.an.object();
+				expect(request.raw.res).to.be.an.object();
+				done();
+			} });
+
+			request = { method: 'POST', url: '/', headers: { authorization: internals.facebookHeader('asd123ads123asd') } };
+			server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
+			server.inject(request);
+		});
+	});
+	
 	it('should return a reply on successful auth', function (done) {
 
 	    var server = new Hapi.Server();

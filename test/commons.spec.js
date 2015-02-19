@@ -8,7 +8,7 @@ var Code = require('code'),
 	expect = Code.expect;
 
 describe('Mix-Auth commons', function () {
-
+	
 	it('cannot add a route that has payload validation required', function (done) {
 
 		var server = new Hapi.Server();
