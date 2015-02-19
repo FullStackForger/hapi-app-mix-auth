@@ -141,28 +141,6 @@ describe('Basic authentication with login and password', function () {
 	    });
 	});
 
-	it('should return an error on bad header format', function (done) {
-
-	    var server = new Hapi.Server();
-	    server.connection();
-	    server.register(require('../'), function (err) {
-
-	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
-	        server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: 'default' } });
-
-	        var request = { method: 'POST', url: '/', headers: { authorization: 'basic' } };
-
-	        server.inject(request, function (res) {
-
-	            expect(res.result).to.exist();
-	            expect(res.statusCode).to.equal(400);
-	            expect(res.result.isMissing).to.equal(undefined);
-	            done();
-	        });
-	    });
-	});
-
 	it('should return an error on bad header internal syntax', function (done) {
 
 	    var server = new Hapi.Server();
@@ -410,64 +388,6 @@ describe('Basic authentication with login and password', function () {
 	                done();
 	            });
 	        });
-	    });
-	});
-
-
-	it('cannot add a route that has payload validation required', function (done) {
-
-	    var server = new Hapi.Server();
-	    server.connection();
-	    server.register(require('../'), function (err) {
-
-	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
-
-	        var fn = function () {
-
-	            server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: { mode: 'required', payload: 'required' } } });
-	        };
-
-	        expect(fn).to.throw('Payload validation can only be required when all strategies support it in path: /');
-	        done();
-	    });
-	});
-
-	it('cannot add a route that has payload validation as optional', function (done) {
-
-	    var server = new Hapi.Server();
-	    server.connection();
-	    server.register(require('../'), function (err) {
-
-	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
-
-	        var fn = function () {
-
-	            server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: { mode: 'required', payload: 'optional' } } });
-	        };
-
-	        expect(fn).to.throw('Payload authentication requires at least one strategy with payload support in path: /');
-	        done();
-	    });
-	});
-
-	it('can add a route that has payload validation as none', function (done) {
-
-	    var server = new Hapi.Server();
-	    server.connection();
-	    server.register(require('../'), function (err) {
-
-	        expect(err).to.not.exist();
-	        server.auth.strategy('default', 'mix-auth', 'required', { validateFunc: internals.user });
-
-	        var fn = function () {
-
-	            server.route({ method: 'POST', path: '/', handler: function (request, reply) { return reply('ok'); }, config: { auth: { mode: 'required', payload: false } } });
-	        };
-
-	        expect(fn).to.not.throw();
-	        done();
 	    });
 	});
 
