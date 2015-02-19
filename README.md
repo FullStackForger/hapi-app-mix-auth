@@ -61,6 +61,9 @@ var user = {
 };
 
 var validate = function (method, authObject, callback) {
+	
+	// var request = this; // uncomment if you need access to request object
+	 
     switch(method) {
         case 'basic':
             Bcrypt.compare(authObject.password, user.password, function (err, isValid) {
