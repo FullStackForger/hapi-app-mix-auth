@@ -1,4 +1,4 @@
-# hapi-app-mix-auth [![Build Status](https://api.travis-ci.org/innocentio/hapi-app-mix-auth.png)](https://travis-ci.org/innocentio/hapi-app-mix-auth)
+# hapi-app-mix-auth [![Build Status](https://travis-ci.org/indieforger/hactor.svg?branch=master)](https://travis-ci.org/indieforger/hapi-app-mix-auth)
 
 ## Hapi App Mix Auth Schema
 
@@ -7,7 +7,7 @@ It is a non-standard authentication schema, that supports three different authen
  - **Oauth** authentication is created for client authenticati'ng themselves with 3rd party oauth `access_token`. It requires combination of provider and token passed in request `Authorisation` header
  - **Guest** authentication is created for temporary guest access for clients authenticating themselves with just UDID. It requires combination of _'udid'_ keyword and UDID passed in request `Authorisation` header  
 
-It has been design tu support annonymose authentication from portable devices. 
+It has been design tu support annonymose authentication from portable devices.
 It allows athenticating users with regular login and password combination or
 3rd party token, such us Facebook `access_token`.
 
@@ -19,7 +19,7 @@ Additionally it supports annonymouse user authenticating only the clients device
 and obviously it passses all original tests.
 
 Hapi Mix Auth authorisation schema was originally forked from **hapi-auth-basic v.2.0.0.RC** and extended to meet additional custom authentication criteria. Code is fully tested and tests cover all three implemented
-authentication methods. 
+authentication methods.
 
 ## Guide
 
@@ -61,9 +61,9 @@ var user = {
 };
 
 var validate = function (method, authObject, callback) {
-	
+
 	// var request = this; // uncomment if you need access to request object
-	 
+
     switch(method) {
         case 'basic':
             Bcrypt.compare(authObject.password, user.password, function (err, isValid) {
@@ -137,5 +137,3 @@ curl -X GET -H "Authorization:Guest dWRpZDoxcWF6MnFhejNxYXo=" -H "Cache-Control:
 ```
 
 Server will respond with: `{"guest":true,"udid":"1qaz2qaz3qaz"}`
-
-
